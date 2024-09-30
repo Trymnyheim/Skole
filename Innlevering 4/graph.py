@@ -34,13 +34,13 @@ def read_actors(G, movies, file_actors):
 
 class Graph:
     def __init__(self):
-        self.V = set()
+        self.V = dict()
         self.E = defaultdict(set)
         self.W = defaultdict(set)
         self.len_E = 0
 
     def addVertex(self, v):
-        self.V.add(v)
+        self.V[v.id] = v
 
     def addEdge(self, v, u, w):
         if u != v:

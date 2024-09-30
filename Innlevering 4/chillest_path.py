@@ -5,53 +5,55 @@ import math
 
 def main():
     G = build_graph("input/movies.tsv", "input/actors.tsv")
-    print(len(G.V))
-    print(G.getLenE())
-    for actor in G.V:
-        if actor.name == "Carrie Coon":
-            node1 = actor
-        if actor.name == "Julie Delpy":
-            node2 = actor
-    for n in dijkstra(G, node1, node2):
-        print(n)
+    testdata = [
+        ["nm2255973", "nm0000460"],
+        ["nm0424060", "nm8076281"],
+        ["nm4689420", "nm0000365"],
+        ["nm0000288", "nm2143282"],
+        ["nm0637259", "nm0931324"]
+    ]
+    for inp in testdata:
+        weight, path = dijkstra(G, inp[0], inp[1])
+        print_path(path, weight)
 
 
+# Finds path with highest rated movies between actors
 def dijkstra(G, s, target):
+    s = G.V[s]
+    target = G.V[target]
     dist = defaultdict(lambda: math.inf)
     dist[s] = 0
-    queue = [(0, s)]  # Keep Actor object in the queue for easy access
-    parent = {}  # To store the shortest path
-
+    queue = [(0, s)]
+    parent = {} # To store the shortest path
     while queue:
-        dist_u, u = heappop(queue)  # u is the Actor object
-        
-        # If we reach the target actor, we can stop early
+        dist_u, u = heappop(queue)  
         if u == target:
-            break
-        
-        # Loop through all adjacent actors
-        for v in G.E[u]:  # v is the adjacent Actor object
-            movie = G.get_highest_rated(u, v)  # Get the highest-rated movie between u and v
-            if movie:  # Check if a movie exists between them
-                c = dist_u + (10 - movie.rating)  # Cost calculation
-                
-                # If the new path is shorter, update the distance and push to the queue
-                if c < dist[v]:
-                    dist[v] = c
-                    parent[v] = u  # Set the predecessor
-                    heappush(queue, (c, v))  # Push with distance and Actor object
-
-    # Reconstruct the shortest path
+            break  
+        for v in G.E[u]: 
+            movie = G.get_highest_rated(u, v)  # Returns highest rated movie
+            c = dist_u + (10 - movie.rating)  # Calculation cost of edge
+            if c < dist[v]:
+                dist[v] = c
+                parent[v] = u 
+                heappush(queue, (c, v))  
+    # Reconstructing the path
     path = []
     current = target
     while current in parent:
         mov = G.get_highest_rated(parent[current], current)
         path.append([current, mov, mov.rating])
         current = parent[current]
-    path.append(s)  # Include the source actor
-    path.reverse()  # Reverse the path to get it from source to target
+    path.append(s) 
+    path.reverse()
+    return dist[target], path
 
-    return dist[target], path  # Return the distance to target and the path
+
+def print_path(path, weight):
+    print("\n", path[0])
+    for edge in path[1:]:
+        actor, movie, rating = edge
+        print(f"=== [ {movie} ({round(rating, 1)})] ===> {actor}")
+    print(f"Total weight: {round(weight, 1)}\n")
 
 
 if __name__ == "__main__":
