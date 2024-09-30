@@ -1,0 +1,68 @@
+Innlevering 2
+
+Effektive mengder
+
+a)
+
+python binaryTree.py
+
+b)
+
+python AVLTree.py
+
+
+
+Bygge balanserte søketrær
+
+a)
+
+Input: En liste med heltall i sortert rekkefølge uten duplikater
+Output: Printer input sortert for optimal innsetting i et balansert binært tre
+
+
+Procedure Balanced(a):
+    mid <- length(a) // 2
+    print(a[mid])
+    if length(a) <= 4 then:
+	a.remove(mid)
+        // print from a in reversed order
+    else then:
+	high <- a[mid + 1 : len(a) - 1]
+	low <- a[0 : mid]
+	if length(high) <= 2 then:
+	    // print from high in reversed order
+	else then:
+	    Balanced(high)
+	if length(low) <= 2 then:
+	    // print from low in reversed order
+	else then:
+	    Balanced(low)
+    
+
+Implentasjon:
+
+python balanced.py
+
+
+b)
+
+Input: En heap bestående av heltall
+Output: Printer input sortert for optimal innsetting i et balansert binært tre
+
+Procedure BalancedHeap(a):
+    if length(a) > 0 then:
+	mid = length(a) // 2
+	low = new Heap()
+	high = new Heap()
+	while length(a) > mid + 1:
+	    low.push(a.pop())
+	print(heap.pop())
+	while length(a) > 0 then:
+	    high.push(a.pop())
+	balancedHeap(high)
+	balancedHeap(low)
+
+
+Implentasjon:
+
+python heapBalanced.py

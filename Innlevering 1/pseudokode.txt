@@ -1,0 +1,46 @@
+
+a)
+
+Algoritmene tar høyde for at teque, T, er implementert med to deque-er, left og right.
+
+
+Input: En teque T og et element x
+Output: T med element x lagt til som siste element
+
+Procedure push_back(T, x):
+
+
+
+Input: En teque T og et element x
+Output: T med element x lagt til som første element
+
+Procedure push_front(T, x):
+
+
+
+Input: En teque T og et element x
+Output: T med element x lagt til som miderste element
+
+Procedure push_middle(T, x):
+
+
+
+Input: En teque T og en index i
+Output: Elementet på index i av T
+
+Procedure get(t, i):
+    mid <- length(T.left)
+    if i >= mid then:
+	return T.right[i - mid]
+    else then:
+	return T.left[i]
+
+
+
+
+⌊(k + 1)/2⌋
+
+
+
+
+c) Alle operasjonene er i O(1)
