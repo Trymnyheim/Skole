@@ -3,9 +3,8 @@ from collections import deque
 
 def main():
     G = build_graph("input/movies.tsv", "input/actors.tsv")
-    # components = find_components(G)
-    # print_components(components)
-    print("ok")
+    components = find_components(G)
+    print_components(components)
 
 
 def find_components(G, visited = set()):
