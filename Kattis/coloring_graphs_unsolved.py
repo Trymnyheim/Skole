@@ -25,11 +25,6 @@ class Graph:
             self.E[val].add(u)
             self.E[u].add(val)
         
-    def print_graph(self):
-        for v in self.V:
-            print(v)
-            print(self.E[v])
-            print()
 
 if __name__ == "__main__":
     main()

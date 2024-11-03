@@ -1,6 +1,6 @@
-from sys import stdin
-
 # https://open.kattis.com/problems/2048
+
+from sys import stdin
 
 def main():
     input = []

@@ -1,3 +1,5 @@
+# https://open.kattis.com/problems/towering
+
 from sys import stdin
 
 input = [int(x) for x in next(stdin).split(" ")]
