@@ -1,7 +1,6 @@
 # https://open.kattis.com/problems/builddeps
 
 from sys import stdin, setrecursionlimit
-from collections import deque
 
 setrecursionlimit(100000)
 
