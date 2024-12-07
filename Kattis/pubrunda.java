@@ -17,6 +17,7 @@ public class pubrunda {
                 maxLength = length;
             }
         }
+        scanner.close();
         System.out.print(maxName + " ");
         System.out.println(maxLength);
     }
