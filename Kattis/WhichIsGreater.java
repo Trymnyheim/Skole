@@ -2,7 +2,7 @@
 package Kattis;
 import java.util.Scanner;
 
-class WhichIsGreater{
+class whichisgreater{
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int number1 = scanner.nextInt();

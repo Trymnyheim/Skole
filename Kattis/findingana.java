@@ -3,7 +3,7 @@
 package Kattis;
 import java.util.Scanner;
 
-public class finding_an_A {
+public class findingana {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         String word = scanner.nextLine();
