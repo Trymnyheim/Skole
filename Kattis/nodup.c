@@ -12,5 +12,5 @@ int main()
         printf("%s\n", word);
         word = strtok(NULL, " ");
     }
-
+    return 0;
 }

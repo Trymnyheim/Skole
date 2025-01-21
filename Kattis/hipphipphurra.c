@@ -11,4 +11,5 @@ int main()
     for (int i = 0; i < age; i++) {
         printf("Hipp hipp hurra, %s!\n", name);
     }
+    return 0;
 }

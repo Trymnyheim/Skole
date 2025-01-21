@@ -26,4 +26,5 @@ int main()
     else {
         printf("Tie");
     }
+    return 0;
 }

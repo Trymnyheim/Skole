@@ -21,4 +21,5 @@ int main()
         }
     }
     printf("%d %d\n", withoutY, withY);
+    return 0;
 }

@@ -16,4 +16,5 @@ int main()
     }
     level--;
     printf("%d\n", level);
+    return 0;
 }
