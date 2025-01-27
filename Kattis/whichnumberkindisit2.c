@@ -55,7 +55,7 @@ int main() {
             printf("EMPTY\n");
         }
     }
-    
+
     // Free allocated memory:
     free(cases);
     free(nums);
