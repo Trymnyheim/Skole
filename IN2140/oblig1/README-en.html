@@ -1,0 +1,175 @@
+<h1 id="in2140-vår-2025">IN2140 vår 2025</h1>
+<h2 id="oblig-1-get-to-know-c-norwegian">Oblig 1: Get to know C
+(Norwegian)</h2>
+<p>For norsk, se <a href="README.md">her</a>.</p>
+<p>In this mandatory assignment, you implement your own functions in a
+number of small programs to become better acquainted with the C
+programming language. You find the handout for this assignment <a
+href="HomeExam01-Handout.zip">here</a>.</p>
+<p>The tasks will be solved in the assigned teams; you can discuss
+solution techniques with other teams, but sharing code outside the team
+is not allowed. See the <a
+href="https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/mn-ifi-oblig.html">guidelines</a>
+for mandatory tasks and other submissions at Ifi.</p>
+<p>The examiners will test submissions on Ifi’s Linux machines,
+available through login.ifi.uio.no (<a href="LOGIN-en.md">how</a>). Your
+programs must compile and run on these machines. If you have any
+questions about the tasks, ask your group teacher.</p>
+<p>Answers are delivered through Devilry by Thursday, February 13 at
+11:59 PM.</p>
+<h3 id="task-1-vowel-replacement">Task 1: Vowel Replacement</h3>
+<p>In this task, you will complete a program that replaces all vowel
+occurrences with another letter in a sentence.</p>
+<p>The program takes two arguments: one sentence and one letter. All
+five English vowels in the sentence, i.e. ‘a’, ‘e’, ‘i’, ‘o’ and ‘u’
+should be replaced with the letter. Then print the changed sentence to
+the terminal.</p>
+<p><strong>Example</strong></p>
+<pre><code>$ ./vowelshift &quot;Lorem ipsum dolor sit amet&quot; a
+Laram apsam dalar sat amat</code></pre>
+<h3 id="exercise-2-string-operations">Exercise 2: String operations</h3>
+<p>This exercise is about strings and various string operations. You
+should implement the following functions in the file
+stringsops-todo.c</p>
+<p>Code errors in the implementation can cause segmentation faults in
+the program. In that case, we recommend that you use Gdb and Valgrind to
+find out where in the program the error occurs.</p>
+<ol type="a">
+<li>stringsum</li>
+</ol>
+<p>Write the function</p>
+<pre><code>int stringsum (char* s)</code></pre>
+<p>that takes a char pointer as an argument and returns an int value
+that we call the string sum. We define the string sum as the accumulated
+value of all characters in the string, where the value corresponds to
+the alphabetical position: ‘a’ has the value 1, ‘b’ has the value 2, and
+so on. We do not distinguish between uppercase and lowercase letters.
+Spaces and the terminating null byte are not included in the sum. If the
+string contains any characters that are not uppercase or lowercase
+letters or spaces, the function should return -1.</p>
+<p>There are several ways to simplify this task; it may be a good idea
+to create a simple solution before improving it so that it meets all the
+criteria in the task.</p>
+<p>Tip: A char is a one-byte numeric value, which can have values from
+-128 to 127, and is most often interpreted as a letter using the ASCII
+table. This can be exploited for an efficient solution – by calculating
+the numeric values needed to solve the problem from the ASCII values of
+the letters.</p>
+<ol start="2" type="a">
+<li>distance_between</li>
+</ol>
+<p>Write the function</p>
+<pre><code>int distance_between(char* s, char c)</code></pre>
+<p>which takes a char pointer and a char as arguments and returns the
+distance (i.e. the difference between the positions) from the first to
+the last occurrence of the character in the string. If the character
+occurs only once, the function should return 0. If the character does
+not occur, the function should return -1.</p>
+<ol start="3" type="a">
+<li>string_between</li>
+</ol>
+<p>Write the function</p>
+<pre><code>char* string_between(char* s, char c)</code></pre>
+<p>which takes a char pointer and a char as arguments and returns the
+substring that is between the first and last occurrence of the character
+in the string. If the character occurs only once, the function should
+return the empty string. If the character does not occur, the function
+should return the null pointer.</p>
+<p>If the character occurs at least twice, neither the first nor the
+last occurrence should be included in the string you return.</p>
+<p>Here you should NOT allocate a new string, but instead you should
+change the input string, and return a pointer to the correct
+location.</p>
+<ol start="4" type="a">
+<li>stringsum2</li>
+</ol>
+<p>Write the function</p>
+<pre><code>int stringsum2(char* s, int* res)</code></pre>
+<p>which works like stringsum, but rather than returning the string sum,
+it places it in the int that res points to. The function returns 0 in
+all cases where stringsum would return a number greater than 0. It
+returns -1 otherwise.</p>
+<h3 id="exercise-3-the-worm-in-the-apple">Exercise 3: The worm in the
+apple</h3>
+<p>You have a variable apple that is defined in the file <a
+href="the_apple.c">the_apple.c</a>. The variable apple is also declared
+in the header file <a href="the_apple.h">the_apple.h</a>.</p>
+<p>The main functions of the program is located in the file
+apple-main.c. The functions mentioned below, which you should
+implemented, shall be located in the file apple-todo.c</p>
+<p>There is only one worm in the apple, but the worm can grow large by
+duplicating its letters. Then it might look like this:</p>
+<pre><code>&quot;leappleappleappleappwwwwooooooorrrrrrr\n&quot;
+&quot; rrmmmmmlleappleappleappleappleappleappleap\n&quot;</code></pre>
+<ol type="a">
+<li>Write the function</li>
+</ol>
+<pre><code>int locateworm(char* apple)</code></pre>
+<p>that finds the worm in the apple using only basic language constructs
+such as if … else, for, while, do, and so on—that is, no functions
+intended for string manipulation, such as strcpy, strchr, or strstr.</p>
+<p>Specifically, the function should return the number that is the
+(zero-based) array index of the first letter belonging to the worm, or
+-1 if the worm does not exist.</p>
+<ol start="2" type="a">
+<li>Write the function</li>
+</ol>
+<pre><code>int removeworm(char* apple)</code></pre>
+<p>that cuts out the worm from the apple by overwriting it with spaces.
+The function returns the length of the worm (the number of bytes that
+were replaced with spaces) or 0 if the worm does not exist.</p>
+<h3 id="compilation">Compilation</h3>
+<p>To compile the programs, we have created a specification file called
+CMakeLists.txt. These files are read by a software package called CMake,
+which can create Makefiles on Linux. It can also create project files
+for Visual Studio or XCode, but for IN2140 you will use terminal windows
+and Makefiles.</p>
+<p>You can download and compile this project as follows: - open a
+terminal - in the terminal, unpack the provided files:</p>
+<pre><code>tar zxvf oblig-01.tgz</code></pre>
+<ul>
+<li>go into the oblig-01 directory</li>
+</ul>
+<pre><code>cd oblig-01</code></pre>
+<ul>
+<li>create a subdirectory to build the programs from the provided source
+code</li>
+</ul>
+<pre><code>mkdir build</code></pre>
+<ul>
+<li>go into the build directory</li>
+</ul>
+<pre><code>cd build</code></pre>
+<ul>
+<li>use CMake to create a Makefile that suits your machine</li>
+</ul>
+<pre><code>cmake ..</code></pre>
+<ul>
+<li>compile to create executable files from the wedge code</li>
+</ul>
+<pre><code>make</code></pre>
+<ul>
+<li>run the programs, e.g.</li>
+</ul>
+<pre><code>./vowelshift &quot;This is a text on the command line&quot; u</code></pre>
+<ul>
+<li>If you need to install CMake on: | OS | Metode | |———|———| | MacOS |
+Manual: Download from https://cmake.org/download/ | | MacOS | With
+Homebrew: brew install cmake | | Linux | Manual: Download from
+https://cmake.org/download/ | | Linux | using Apt: sudo apt-get install
+cmake | | Linux | using Snap: sudo snap install cmake | | Windows |
+Manual: Download from Download from https://cmake.org/download/ | |
+Windows | For Visual Studio integration see
+https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170
+|</li>
+</ul>
+<h3 id="delivery">Delivery</h3>
+<p>You should submit your code to <a
+href="https://devilry.ifi.uio.no/">Devilry</a> as an archive file. The
+archive file should be a Zip file and must contain all source files and
+documentation files.</p>
+<p>If you follow the ‘make’ recipe under <a
+href="#Compilation">Compilation</a>, you can create the archive file by
+calling</p>
+<pre><code>make package_source</code></pre>
+<p>The file is then named <code>HomeExam01-1.0-Source.zip</code>.</p>

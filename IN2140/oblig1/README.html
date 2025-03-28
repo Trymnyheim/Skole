@@ -1,0 +1,172 @@
+<h1 id="in2140-vår-2025">IN2140 vår 2025</h1>
+<h2 id="oblig-1-bli-kjent-med-c-norsk">Oblig 1: Bli kjent med C
+(norsk)</h2>
+<p>For english, see <a href="README-en.md">here</a>.</p>
+<p>I denne obligen skriver du dine egne funksjoner i en rekke små
+programmer for å bli bedre kjent med programmeringsspråket C. Du finner
+utdelingsarkene for denne oppgaven <a
+href="HomeExam01-Handout.zip">her</a>.</p>
+<p>Oppgavene skal løses i de tildelte teameme; man kan diskutere
+løsningsteknikker med andre teams, men å dele kode utenfor teamet er
+ikke lov. Se <a
+href="https://www.uio.no/studier/eksamen/obligatoriske-aktiviteter/mn-ifi-oblig.html">retningslinjene</a>
+for obligatoriske oppgaver og andre innleveringer ved Ifi.</p>
+<p>Retterne vil teste innleveringer på Ifis Linuxmaskiner, tilgjengelige
+gjennom login.ifi.uio.no (<a href="LOGIN-no.md">hvordan</a>).
+Programmene dine må kompilere og kjøre på disse maskinene. Dersom du
+lurer på noe om oppgavene, spør gruppelæreren din.</p>
+<p><strong>Besvarelse leveres gjennom Devilry innen torsdag 13. februar
+kl. 23.59.</strong></p>
+<h3 id="oppgave-1-vokalbytte">Oppgave 1: Vokalbytte</h3>
+<p>I denne oppgaven skal du fullføre et program som bytter ut alle
+vokalforekomster med en annen bokstav i en setning.</p>
+<p>Programmet tar to argumenter: én setning og én bokstav. Alle fem
+engelske vokaler i setningen, det vil si ‘a’, ‘e’, ‘i’, ‘o’ og ‘u’ skal
+byttes ut med bokstaven. Skriv så ut den forandrede setningen til
+terminalen.</p>
+<p><strong>Eksempel</strong></p>
+<pre><code>$ ./vowelshift &quot;Lorem ipsum dolor sit amet&quot; a
+Laram apsam dalar sat amat</code></pre>
+<h3 id="oppgave-2-strengoperasjoner">Oppgave 2: Strengoperasjoner</h3>
+<p>Denne oppgaven handler om strenger og diverse strengoperasjoner. Du
+skal skrive funksjonene i filen stringops-todo.c</p>
+<p>Kodefeil i implementasjonen kan forårsake segmenteringsfeil i
+programmet. I så fall anbefaler vi at du bruker Gdb og Valgrind for å
+finne ut hvor i programmet feilen oppstår.</p>
+<ol type="a">
+<li>stringsum</li>
+</ol>
+<p>Skriv funksjonen</p>
+<pre><code>int stringsum (char* s)</code></pre>
+<p>som tar en char-peker som argument og returnerer en int-verdi som vi
+kaller strengsummen. Vi definerer strengsummen som den akkumulerte
+verdien av alle tegn i strengen, hvor verdien tilsvarer alfabetisk
+posisjon: ‘a’ har verdien 1, ‘b’ har verdien 2 og så videre. Vi skiller
+ikke mellom små og store bokstaver. Mellomrom og den avsluttende
+nullbyten inngår ikke i summen. Dersom strengen inneholder noen tegn som
+ikke er en stor eller liten bokstav eller mellomrom, så skal funksjonen
+returnere -1.</p>
+<p>Det er flere måter å forenkle denne oppgaven på; det kan være lurt å
+lage en enkel løsning før du forbedrer den så den møter alle kriteriene
+i oppgaven.</p>
+<p>Tips: En char er en énbytes tallverdi, som kan ha verdier fra -128
+til 127, og som oftest tolkes som en bokstav ved hjelp av
+ASCII-tabellen. Dette kan man utnytte for en effektiv løsning – ved å
+beregne tallverdiene som trenges for å løse oppgaven fra bokstavenes
+ASCII-verdier.</p>
+<ol start="2" type="a">
+<li>distance_between</li>
+</ol>
+<p>Skriv funksjonen</p>
+<pre><code>int distance_between(char* s, char c)</code></pre>
+<p>som tar en char-peker og en char som argumenter og returnerer
+avstanden (altså differansen mellom posisjonene) fra første til siste
+forekomst av tegnet i strengen. Dersom tegnet forekommer kun én gang så
+skal funksjonen returnere 0. Dersom tegnet ikke forekommer, så skal
+funksjonen returnere -1.</p>
+<ol start="3" type="a">
+<li>string_between</li>
+</ol>
+<p>Skriv funksjonen</p>
+<pre><code>char* string_between(char* s, char c)</code></pre>
+<p>som tar en char-peker og en char som argumenter og returnerer
+delstrengen som befinner seg mellom første og siste forekomst av tegnet
+i strengen. Dersom tegnet forekommer kun én gang, så skal funksjonen
+returnere den tomme strengen. Dersom tegnet ikke forekommer, så skal
+funksjonen returnere nullpekeren.</p>
+<p>Dersom tegnet forekommer minst to ganger skal hverken den første og
+heller ikke den siste forekomsten være med i strengen du returnerer.</p>
+<p>Her skal du IKKE allokkere en ny streng, men isteden skal du forandre
+inputstrengen, og returnere peker til rett sted.</p>
+<ol start="4" type="a">
+<li>stringsum2</li>
+</ol>
+<p>Skriv funksjonen</p>
+<pre><code>int stringsum2(char* s, int* res)</code></pre>
+<p>som fungerer som stringssum, men istedenfor å returnere strengsummen,
+legger den resultatet i int-en som res peker på. Funksjonen returnerer 0
+i alle tilfeller da stringsum ville returnert et tall større enn 0 or -1
+ellers.</p>
+<h3 id="oppgave-3-marken-i-eplet">Oppgave 3: Marken i eplet</h3>
+<p>Du har en variabel apple som er definiert i filen <a
+href="the_apple.c">the_apple.c</a>. Variablen apple er også deklarert i
+headerfilen <a href="the_apple.h">the_apple.h</a>.</p>
+<p>Main-funksjonene til programmet ligger i filen apple-main.c.
+Funksjonene nevnt nedenfor, som du bør implementere, skal være plassert
+i filen apple-todo.c</p>
+<p>Det er bare én mark i eplet, men marken kan vokse seg stor ved å
+duplisere sine bokstaver. Da ser den kanskje slik ut:</p>
+<pre><code>&quot;leappleappleappleappwwwwoooooooorrrrrr\n&quot;
+&quot; rrmmmmmleappleappleappleappleappleap\n&quot;</code></pre>
+<ol type="a">
+<li>Skriv funksjonen</li>
+</ol>
+<pre><code>int locateworm(char* apple)</code></pre>
+<p>som finner marken i eplet ved kun å bruke grunnleggende
+språkkonstruksjoner som if … else, for, while, do og så videre – altså
+ingen funksjoner som er ment for strengmanipulasjoner, som f.eks.
+strcpy, strchr eller strstr.</p>
+<p>Nærmere bestemt skal funksjonen returnere tallet som er den
+(null-baserte) array-indeksen til den første bokstaven som tilhører
+marken, eller -1 hvis marken ikke finnes.</p>
+<ol start="2" type="a">
+<li>Skriv funksjonen</li>
+</ol>
+<pre><code>int removeworm(char* apple)</code></pre>
+<p>som skjærer ut marken av eplet ved å overskrive den med mellomrom.
+Funksjonen returnerer markens lengde (antallet bytes som ble erstattet
+med mellomrom) eller 0 hvis marken ikke finnes.</p>
+<h3 id="kompilering">Kompilering</h3>
+<p>For å kompilere programmene har vi laget en spesifikasjonsfil som
+heter CMakeLists.txt. Disse filene leses av en softwarepakke med navn
+CMake, og den kan lage Makefiler på Linux. Den kan også lage
+prosjektfiler for Visual Studio eller XCode, men for IN2140 skal dere
+bruke terminalvinduer og Makefiler.</p>
+<p>Du kan nedlaste og kompilere dette prosjektet som følger: - åpne en
+terminal - i terminalen, pakk opp de utleverte filene:</p>
+<pre><code>  tar zxvf oblig-01.tgz</code></pre>
+<ul>
+<li>gå inn i oblig-01-katalogen</li>
+</ul>
+<pre><code>cd oblig-01</code></pre>
+<ul>
+<li>lag en underkatalog for å bygge programmene fra den utleverte
+kildekoden</li>
+</ul>
+<pre><code>mkdir build</code></pre>
+<ul>
+<li>gå inn i build-katalogen</li>
+</ul>
+<pre><code>cd build</code></pre>
+<ul>
+<li>bruk CMake til å lage en Makefile som passer din maskin</li>
+</ul>
+<pre><code>cmake ..</code></pre>
+<ul>
+<li>kompilér for å lage eksekverbare filer fra kildekoden</li>
+</ul>
+<pre><code>make</code></pre>
+<ul>
+<li>kjør programmene, f.eks.</li>
+</ul>
+<pre><code>./vowelshift &quot;This is a text on the command line&quot; u</code></pre>
+<p>Hvis du har behov til å installere CMake på: | OS | Metode |
+|———|———| | MacOS | Manual: Download from https://cmake.org/download/ |
+| MacOS | With Homebrew: brew install cmake | | Linux | Manual: Download
+from https://cmake.org/download/ | | Linux | using Apt: sudo apt-get
+install cmake | | Linux | using Snap: sudo snap install cmake | |
+Windows | Manual: Download from Download from
+https://cmake.org/download/ | | Windows | For Visual Studio integration
+see
+https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170
+|</p>
+<h3 id="levering">Levering</h3>
+<p>Dere skal levere koden deres i <a
+href="https://devilry.ifi.uio.no/">Devilry</a> som en arkiv-fil.
+Arkiv-filen skal være en Zip-fil og må inneholde alle kildefiler og
+dokumentasjonsfiler.</p>
+<p>Følger dere oppskriften for ‘make’ under <a
+href="#Kompilering">Kompilering</a>, kan dere lage arkiv-filen ved å
+kalle</p>
+<pre><code>make package_source</code></pre>
+<p>Filen heter da <code>HomeExam01-1.0-Source.zip</code>.</p>
